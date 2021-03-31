@@ -1,4 +1,24 @@
-  ## Maven库项目脚手架
+
+## 利用gifLib提升Glide Gif性能优化卡顿
+
+```
+implementation 'com.github.forJrking:GlideGifLib:Tag'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Maven库项目脚手架
 
 ## 打包项目
 
