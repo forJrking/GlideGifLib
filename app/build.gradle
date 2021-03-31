@@ -57,19 +57,19 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-apply plugin: 'maven'
-uploadArchives {
-    repositories.mavenDeployer {
-        //maven 本地文件地址
-        def mavenLib = file(getProperty('mavenPath'))
-        repository(url: "file://${mavenLib.absolutePath}")
-        pom.project {
-            name NAME
-            version VERSION
-            groupId GROUDID
-            artifactId ARTIFACTID
-            packaging PACKAGING
-            description DESCRIPTION
-        }
-    }
-}
+//apply plugin: 'maven'
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        //maven 本地文件地址
+//        def mavenLib = file(getProperty('mavenPath'))
+//        repository(url: "file://${mavenLib.absolutePath}")
+//        pom.project {
+//            name NAME
+//            version VERSION
+//            groupId GROUDID
+//            artifactId ARTIFACTID
+//            packaging PACKAGING
+//            description DESCRIPTION
+//        }
+//    }
+//}
