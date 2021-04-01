@@ -3,6 +3,8 @@ package com.github.forjrking.gifLib
 import android.graphics.drawable.Drawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Registry
+import com.bumptech.glide.gifdecoder.GifDecoder
+import com.bumptech.glide.load.model.UnitModelLoader
 import com.bumptech.glide.load.resource.transcode.BitmapBytesTranscoder
 import com.bumptech.glide.load.resource.transcode.GifDrawableBytesTranscoder
 import pl.droidsonroids.gif.GifDrawable
@@ -20,19 +22,24 @@ object GlideGifLib {
         val gifTranscoder = GifDrawableBytesTranscoder()
 
         registry.prepend(
-                Registry.BUCKET_GIF, java.io.InputStream::class.java, GifDrawable::class.java,
-                GifLibDecoder(registry.imageHeaderParsers, bufferDecoder, glide.arrayPool)
+            Registry.BUCKET_GIF, java.io.InputStream::class.java, GifDrawable::class.java,
+            GifLibDecoder(registry.imageHeaderParsers, bufferDecoder, glide.arrayPool)
         ).prepend(
-                Registry.BUCKET_GIF,
-                java.nio.ByteBuffer::class.java,
-                GifDrawable::class.java, bufferDecoder
+            Registry.BUCKET_GIF,
+            java.nio.ByteBuffer::class.java,
+            GifDrawable::class.java, bufferDecoder
         ).prepend(
-                GifDrawable::class.java, GifLibEncoder()
+            GifDrawable::class.java, GifLibEncoder()
         ).register(
-                Drawable::class.java, ByteArray::class.java,
-                DrawableBytesTranscoder(glide.bitmapPool, bitmapBytesTranscoder, gifTranscoder, gifLibTranscoder)
+            Drawable::class.java, ByteArray::class.java,
+            DrawableBytesTranscoder(
+                glide.bitmapPool,
+                bitmapBytesTranscoder,
+                gifTranscoder,
+                gifLibTranscoder
+            )
         ).register(
-                GifDrawable::class.java, ByteArray::class.java, gifLibTranscoder
+            GifDrawable::class.java, ByteArray::class.java, gifLibTranscoder
         )
     }
 }
